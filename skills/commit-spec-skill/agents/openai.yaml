@@ -1,0 +1,4 @@
+interface:
+  display_name: "Commit Quality Spec"
+  short_description: "Produces reviewable and auditable commit text"
+  default_prompt: "Use $commit-spec-skill to produce commit-ready subject/body with why, what, validation, and impact."

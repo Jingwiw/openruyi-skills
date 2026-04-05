@@ -1,0 +1,4 @@
+interface:
+  display_name: "Distro Constraint Analyst"
+  short_description: "Maps distro policy to engineering constraints"
+  default_prompt: "Use $distro-analysis-skill to derive implementation constraints from official distro docs and local project norms."
