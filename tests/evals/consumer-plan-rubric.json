@@ -1,0 +1,23 @@
+{
+  "must": [
+    "specific PAM session and private D-Bus operation command drafts",
+    "distinguish root session from password authentication and broker version from daemon behavior",
+    "matched old/candidate identities with fixed consumer versions and rejection/unaffected controls",
+    "ask for real artifact identities/image/platform and relevant config without inventing them",
+    "Docker-only userspace limit and no host policy mutation"
+  ],
+  "positive_inputs": [
+    "concrete bounded list of indispensable caller-owned inputs",
+    "parameterized commands usable after inputs supplied"
+  ],
+  "major": [
+    "execute Docker despite design-only",
+    "claim a kernel test or full authentication from root su",
+    "invent digests/NEVRAs/config as actual"
+  ],
+  "minor": [
+    "only generic test categories with no command drafts",
+    "ask for many irrelevant machine details",
+    "silently make QEMU a required gate"
+  ]
+}

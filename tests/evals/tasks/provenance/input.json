@@ -1,0 +1,49 @@
+{
+  "fixture_kind": "synthetic",
+  "candidate_git_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "expected_nevra": "watchlog-5.0-2.dist",
+  "source_before": {
+    "revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "srcmd5": "22222222222222222222222222222222"
+  },
+  "source_after": {
+    "revision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "srcmd5": "22222222222222222222222222222222"
+  },
+  "artifacts": [
+    {
+      "arch": "x86_64",
+      "filename": "watchlog-5.0-2.dist.x86_64.rpm",
+      "sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+      "producing_log": {
+        "git_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "srcmd5": "22222222222222222222222222222222",
+        "result": "succeeded",
+        "artifact_sha256": "3333333333333333333333333333333333333333333333333333333333333333"
+      }
+    },
+    {
+      "arch": "riscv64",
+      "filename": "watchlog-5.0-2.dist.riscv64.rpm",
+      "sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+      "producing_log": {
+        "git_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "srcmd5": "11111111111111111111111111111111",
+        "result": "succeeded",
+        "artifact_sha256": "4444444444444444444444444444444444444444444444444444444444444444"
+      },
+      "latest_build": {
+        "git_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "srcmd5": "22222222222222222222222222222222",
+        "result": "failed",
+        "tail": "assertion failed during %check"
+      }
+    }
+  ],
+  "environment": {
+    "OBS_URL": null,
+    "project": null,
+    "credentials_available": false,
+    "rpm_files_present": false
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "fixture_kind": "synthetic PR input",
+  "target": "contributor/example-distro",
+  "head": "topic",
+  "base": "main",
+  "template": "## Summary\n\n## Related Issue\n\n## Checklist\n- [ ] I have read the Code of Conduct.\n- [ ] This PR includes non-trivial AI-assisted content.",
+  "current_body": "## Summary\n\nThis meticulously engineered contribution introduces a comprehensive upgrade and robust multi-dimensional verification.\n\n## Related Issue\n\nNone.\n\n## Checklist\n- [ ] I have read the Code of Conduct.\n- [x] This PR includes non-trivial AI-assisted content.",
+  "changes": [
+    "watchlog updated to 5.0",
+    "enable RISC-V mappings through build option"
+  ],
+  "release_url": "https://upstream.example.invalid/releases/v5.0",
+  "obs_links": {
+    "x86_64": "https://obs.example.invalid/package/log/home:contributor:test/watchlog/x86_64/x86_64",
+    "riscv64": "https://obs.example.invalid/package/log/home:contributor:test/watchlog/riscv64/riscv64"
+  },
+  "test_facts": [
+    "OBS builds succeeded for the candidate on both architectures",
+    "Docker: signed RPM install, downgrade and re-install passed",
+    "Docker: root-initiated su/runuser sessions and private dbus-daemon calls passed",
+    "Docker: RISC-V syscall mappings and invalid-input rejection passed",
+    "rpmlint remained nonzero; user accepted private review with detailed lint record kept separately",
+    "kernel audit event generation was not tested"
+  ],
+  "confirmed_ai_tool": "Codex",
+  "model_identity": null,
+  "merged_samples": [
+    {
+      "merged": true,
+      "body": "Update component to the new release."
+    },
+    {
+      "merged": true,
+      "body": "Enable the feature required by the affected consumer."
+    }
+  ],
+  "github_write_authorized": false
+}

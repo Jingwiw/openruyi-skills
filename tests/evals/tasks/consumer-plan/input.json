@@ -1,0 +1,19 @@
+{
+  "fixture_kind": "synthetic planning input",
+  "target_library": "libaudit.so.1",
+  "changed_feature": "RISC-V syscall name/number mappings enabled by a build option",
+  "consumer_observations": [
+    "pam modules link to libaudit.so.1",
+    "su and runuser use PAM",
+    "dbus-daemon links to libaudit.so.1",
+    "dbus-broker has only been queried for --version"
+  ],
+  "available_inputs": {
+    "old_rpms": null,
+    "candidate_rpms": null,
+    "image_digest": null,
+    "target_platform": null,
+    "private_service_config": null
+  },
+  "scope": "userspace installation and consumer regression; no host audit rule changes"
+}

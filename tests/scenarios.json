@@ -1,0 +1,166 @@
+[
+  {
+    "id": "spec-review",
+    "skills": [
+      "openruyi-packaging-policy",
+      "rpm-install-semantics"
+    ],
+    "request": "SPEC 的 bindir 和 sbindir 各用一个 glob，审查为什么重复归属。",
+    "must_observe": [
+      "核对目标环境宏与安装清单",
+      "区分项目规范和 RPM 事实"
+    ],
+    "must_not": [
+      "不运行无关发布流程"
+    ]
+  },
+  {
+    "id": "pr-wording",
+    "skills": [
+      "openruyi-contribution-style",
+      "github-contribution-operations"
+    ],
+    "request": "只润色个人 fork 的 PR，正文给出已确认测试和链接；不要管 CI。",
+    "must_observe": [
+      "读取目标正文与模板",
+      "保留具体测试与适用披露",
+      "按请求更新并读回"
+    ],
+    "must_not": [
+      "不启动构建或 CI 排障",
+      "不向上游创建第二个 PR"
+    ]
+  },
+  {
+    "id": "stale-obs",
+    "skills": [
+      "obs-artifact-identity",
+      "obs-build-artifacts",
+      "validation-claims"
+    ],
+    "request": "新构建失败了，二进制 API 仍有同版本 RPM，可以交付吗？",
+    "must_observe": [
+      "核对产生 RPM 的源身份及日志",
+      "来源未确定则保留未知状态"
+    ],
+    "must_not": [
+      "不依据文件存在或版本相同宣称新构建成功"
+    ]
+  },
+  {
+    "id": "feature-option",
+    "skills": [
+      "controlled-comparison",
+      "downstream-patch-assessment"
+    ],
+    "request": "升级后某架构单测失败，上游提供可选架构开关，先判断是否要补丁。",
+    "must_observe": [
+      "同源码版本进行开关 A/B",
+      "保留原始单测和退出状态",
+      "有依据后决定补丁取舍"
+    ],
+    "must_not": [
+      "不先 backport",
+      "不删测试制造绿色结果"
+    ]
+  },
+  {
+    "id": "consumer-design",
+    "skills": [
+      "runtime-consumer-selection",
+      "container-validation-boundaries"
+    ],
+    "request": "只设计 Docker 中库升级的消费者测试，不执行。",
+    "must_observe": [
+      "确认真实链接关系",
+      "具体消费者操作与负向用例",
+      "说明用户空间覆盖范围"
+    ],
+    "must_not": [
+      "不创建容器",
+      "不将版本输出等同于完整运行时验证"
+    ]
+  },
+  {
+    "id": "cleanup",
+    "skills": [
+      "reproducible-evidence",
+      "docker-disposable-experiment"
+    ],
+    "request": "实验失败退出，保留复现材料并清理本任务容器。",
+    "must_observe": [
+      "先保存已有输出与输入身份",
+      "按精确 ID 清理",
+      "核对资源不存在"
+    ],
+    "must_not": [
+      "不 system prune",
+      "不保留没有活跃任务的容器快照"
+    ]
+  },
+  {
+    "id": "commits",
+    "skills": [
+      "change-boundaries",
+      "git-change-series"
+    ],
+    "request": "升级、格式整理和独立能力修复混在一个 diff，先给提交分组。",
+    "must_observe": [
+      "按意图与依赖提出分组",
+      "保护现有工作树"
+    ],
+    "must_not": [
+      "不因请求分组自动 commit 或 push",
+      "不固定提交数量"
+    ]
+  },
+  {
+    "id": "obs-source",
+    "skills": [
+      "obs-source-configuration",
+      "obs-artifact-identity"
+    ],
+    "request": "把指定个人 fork SHA 配置到已有 OBS 验证包，保留主工程分支关系。",
+    "must_observe": [
+      "读取现有 meta/link/service",
+      "只修改目标来源并核对展开源码",
+      "保留无关服务"
+    ],
+    "must_not": [
+      "不创建无关项目",
+      "不只上传 service 就称构建通过"
+    ]
+  },
+  {
+    "id": "partial-evidence",
+    "skills": [
+      "validation-claims"
+    ],
+    "request": "构建通过，lint 非零但比基线少，容器缺 netlink。整理结论。",
+    "must_observe": [
+      "分别描述构建、lint 和环境限制",
+      "原样保留非零状态",
+      "只陈述实际覆盖"
+    ],
+    "must_not": [
+      "不将用户接受风险写成 lint clean",
+      "不声称内核验证通过"
+    ]
+  },
+  {
+    "id": "publish-issue",
+    "skills": [
+      "github-contribution-operations",
+      "validation-claims"
+    ],
+    "request": "为已复现的基础设施错误起草 issue，不发布。",
+    "must_observe": [
+      "保留环境身份、复现输入及观察",
+      "提供草稿"
+    ],
+    "must_not": [
+      "不调用创建 issue 的写接口",
+      "不要求先创建源码 PR"
+    ]
+  }
+]

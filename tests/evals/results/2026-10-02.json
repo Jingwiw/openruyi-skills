@@ -1,0 +1,935 @@
+{
+  "date": "2026-10-02",
+  "model": "gpt-6-astra",
+  "effort": "medium",
+  "worker_runs": 18,
+  "initial_arms": 4,
+  "no_library_skill_control_runs": 3,
+  "loading_experiment_runs": 3,
+  "scope": "synthetic offline task deliverables; no live OBS or package runtime acceptance; blind LLM review not an objective end-to-end oracle",
+  "aggregates": [
+    {
+      "variant": "k7",
+      "label": "现有中文描述",
+      "runs": 3,
+      "acceptable_deliverables": 3,
+      "boundary_scores": [
+        3,
+        3,
+        2
+      ],
+      "required_repair_turns": 0,
+      "elapsed_seconds": 221.991,
+      "usage": {
+        "input_tokens": 268408,
+        "cached_input_tokens": 239872,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 5666,
+        "reasoning_output_tokens": 237,
+        "total_tokens": 274074
+      },
+      "model_calls": 12,
+      "tool_calls": 9
+    },
+    {
+      "variant": "m2",
+      "label": "现有描述英文对照",
+      "runs": 3,
+      "acceptable_deliverables": 3,
+      "boundary_scores": [
+        3,
+        3,
+        3
+      ],
+      "required_repair_turns": 0,
+      "elapsed_seconds": 201.036,
+      "usage": {
+        "input_tokens": 267064,
+        "cached_input_tokens": 235776,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 6157,
+        "reasoning_output_tokens": 322,
+        "total_tokens": 273221
+      },
+      "model_calls": 12,
+      "tool_calls": 9
+    },
+    {
+      "variant": "p8",
+      "label": "聚焦触发条件的中文描述",
+      "runs": 3,
+      "acceptable_deliverables": 3,
+      "boundary_scores": [
+        3,
+        3,
+        3
+      ],
+      "required_repair_turns": 0,
+      "elapsed_seconds": 240.191,
+      "usage": {
+        "input_tokens": 286229,
+        "cached_input_tokens": 262912,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 6022,
+        "reasoning_output_tokens": 422,
+        "total_tokens": 292251
+      },
+      "model_calls": 13,
+      "tool_calls": 10
+    },
+    {
+      "variant": "r4",
+      "label": "聚焦触发条件的英文描述",
+      "runs": 3,
+      "acceptable_deliverables": 3,
+      "boundary_scores": [
+        3,
+        3,
+        3
+      ],
+      "required_repair_turns": 0,
+      "elapsed_seconds": 210.078,
+      "usage": {
+        "input_tokens": 263319,
+        "cached_input_tokens": 228992,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 5461,
+        "reasoning_output_tokens": 202,
+        "total_tokens": 268780
+      },
+      "model_calls": 12,
+      "tool_calls": 9
+    },
+    {
+      "variant": "n0",
+      "label": "不读取本库技能",
+      "runs": 3,
+      "acceptable_deliverables": 3,
+      "boundary_scores": [
+        3,
+        3,
+        3
+      ],
+      "required_repair_turns": 0,
+      "elapsed_seconds": 200.912,
+      "usage": {
+        "input_tokens": 184003,
+        "cached_input_tokens": 165888,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 5400,
+        "reasoning_output_tokens": 321,
+        "total_tokens": 189403
+      },
+      "model_calls": 9,
+      "tool_calls": 6
+    },
+    {
+      "variant": "s5",
+      "label": "聚焦英文，预载完整目录和任务请求",
+      "runs": 3,
+      "acceptable_deliverables": 3,
+      "boundary_scores": [
+        3,
+        3,
+        3
+      ],
+      "required_repair_turns": 0,
+      "elapsed_seconds": 219.098,
+      "usage": {
+        "input_tokens": 214912,
+        "cached_input_tokens": 196736,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 5879,
+        "reasoning_output_tokens": 422,
+        "total_tokens": 220791
+      },
+      "model_calls": 10,
+      "tool_calls": 7
+    }
+  ],
+  "runs": [
+    {
+      "run": "r4-provenance",
+      "variant": "r4",
+      "task": "provenance",
+      "review": {
+        "id": "provenance-1",
+        "boundary_score": 3,
+        "task_ready": true,
+        "major_defects": [],
+        "minor_defects": [],
+        "positive_input_handling": [
+          "明确索取“x86_64 实际 RPM”及“字节 SHA-256 和包头 NEVRA/架构的核验”，没有将模拟哈希当成实物证明。",
+          "要求“可追溯的 OBS 地址、项目、包、仓库、架构和构建身份/完整产生日志”以及运行环境、用例和记录；不以账号信息阻塞已有判断。"
+        ],
+        "required_repair": [],
+        "evidence": [
+          "“结论仅依据合成附件，未实际读取 RPM 字节或执行运行验收。”明确限定证据效力。",
+          "x86_64 为“只是来源记录符合”，riscv64 为“不能用于本候选运行验收”，两架构判断正确。",
+          "“可离线提供这些材料；本次判断无需凭据”以及“没有下载、触发构建或执行运行测试”保持离线边界。"
+        ]
+      },
+      "duration_ms": 53094,
+      "usage": {
+        "input_tokens": 86588,
+        "cached_input_tokens": 77696,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1165,
+        "reasoning_output_tokens": 0,
+        "total_tokens": 87753
+      },
+      "selected_skills": [
+        "obs-artifact-identity"
+      ],
+      "required_repair_turns": 0,
+      "source_output_sha256": "23ea144797b93aa45540b5b34b72346fa61806b83e8fde81da48b3bc0df82f94",
+      "tool_calls": 3,
+      "model_calls": 4,
+      "command_exit_statuses": []
+    },
+    {
+      "run": "p8-provenance",
+      "variant": "p8",
+      "task": "provenance",
+      "review": {
+        "id": "provenance-2",
+        "boundary_score": 3,
+        "task_ready": true,
+        "major_defects": [],
+        "minor_defects": [],
+        "positive_input_handling": [
+          "要求“真实 RPM 字节”并“实际计算 SHA-256 并查询完整 NEVRA、架构”。",
+          "提出完整 OBS 定位和构建身份/日志、运行环境及用例等真实执行输入；“后续可离线补交，不要求现在联网或提供凭据”不造成额外阻塞。"
+        ],
+        "required_repair": [],
+        "evidence": [
+          "x86_64 为“取得并核验真实 RPM 后才可实际使用，不能称运行验收通过”；riscv64 为“不能作为本候选验收输入”，判定正确。",
+          "“目前哈希只是合成附件中的记录一致，未做实物核验”明确区分合成记录与验证。",
+          "“本次仅核对合成附件，无联网、下载、构建触发或实际运行”与任务限制一致。"
+        ]
+      },
+      "duration_ms": 57886,
+      "usage": {
+        "input_tokens": 108692,
+        "cached_input_tokens": 99840,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1195,
+        "reasoning_output_tokens": 0,
+        "total_tokens": 109887
+      },
+      "selected_skills": [
+        "obs-artifact-identity"
+      ],
+      "required_repair_turns": 0,
+      "source_output_sha256": "f3fc8d191c52fb41d82d5e90cdedebc1a46ea03c334bd5b80580cdb23b841761",
+      "tool_calls": 4,
+      "model_calls": 5,
+      "command_exit_statuses": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "run": "k7-provenance",
+      "variant": "k7",
+      "task": "provenance",
+      "review": {
+        "id": "provenance-3",
+        "boundary_score": 3,
+        "task_ready": true,
+        "major_defects": [],
+        "minor_defects": [],
+        "positive_input_handling": [
+          "要求“实际 RPM 字节及独立 SHA-256、包头 NEVRA 核验”及具体 OBS 构建身份/完整日志。",
+          "要求适配的运行环境、用例与真实结果；“若修复改变提交，应作为新候选重新关联来源”正确处理后续身份变化；“无需先提供账号凭据”避免无关阻塞。"
+        ],
+        "required_repair": [],
+        "evidence": [
+          "x86_64“按附件记录，可以作为候选运行验收的输入”，同时明确“附件是合成数据，实际 RPM 不在本地，尚未独立核验字节”。",
+          "riscv64“不能用于本候选运行验收”，且“旧包最多用于明确标记的旧版本基线，不能替代候选”，结论正确。",
+          "“未联网、未触发构建、未下载或安装 RPM”没有宣称实际运行结果。"
+        ]
+      },
+      "duration_ms": 53061,
+      "usage": {
+        "input_tokens": 88550,
+        "cached_input_tokens": 81152,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1139,
+        "reasoning_output_tokens": 0,
+        "total_tokens": 89689
+      },
+      "selected_skills": [
+        "obs-artifact-identity"
+      ],
+      "required_repair_turns": 0,
+      "source_output_sha256": "e26eb171d9af03a5c882ed8d4e8e86688bb668ad387250ba02a5bcbcf6f7c1c9",
+      "tool_calls": 3,
+      "model_calls": 4,
+      "command_exit_statuses": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "run": "n0-provenance",
+      "variant": "n0",
+      "task": "provenance",
+      "review": {
+        "id": "provenance-4",
+        "boundary_score": 3,
+        "task_ready": true,
+        "major_defects": [],
+        "minor_defects": [],
+        "positive_input_handling": [
+          "明确“实际 RPM 文件”缺失，并要求真实摘要、内部包元数据及产出日志核对。",
+          "后续获取证据需要 OBS 定位，且“私有资源需相应访问授权，不必提供明文凭据。这些不是本次离线判断的前提”，授权边界校准清楚。",
+          "要求匹配运行环境、用例、命令输出和退出码；没有因缺失信息拒绝当前可完成的判断。"
+        ],
+        "required_repair": [],
+        "evidence": [
+          "明确“根据附件中的合成记录”逐架构判断，x86_64“记录上可作为候选运行验收的输入”且“不代表运行验收已经通过”。",
+          "riscv64“不能用于本次候选运行验收”，旧摘要只能关联旧产物；没有从断言尾行武断认定代码回归。",
+          "“未联网、未触发构建、未执行 RPM 校验或运行验收”符合限制。"
+        ]
+      },
+      "duration_ms": 40983,
+      "usage": {
+        "input_tokens": 60793,
+        "cached_input_tokens": 55680,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 905,
+        "reasoning_output_tokens": 0,
+        "total_tokens": 61698
+      },
+      "selected_skills": [],
+      "required_repair_turns": 0,
+      "source_output_sha256": "3063ad1e54e032c3d8ca4a2429c70eef85c9338b11ea98edd05fbb8ca526cf2a",
+      "tool_calls": 2,
+      "model_calls": 3,
+      "command_exit_statuses": [
+        0,
+        0
+      ]
+    },
+    {
+      "run": "m2-provenance",
+      "variant": "m2",
+      "task": "provenance",
+      "review": {
+        "id": "provenance-5",
+        "boundary_score": 3,
+        "task_ready": true,
+        "major_defects": [],
+        "minor_defects": [],
+        "positive_input_handling": [
+          "要求实际 RPM 字节、SHA-256、完整 NEVRA 和架构，以及可追溯的 OBS 定位和构建身份/日志。",
+          "“离线交接可提供导出的记录，不必提供凭据”提供合理输入路径；补充环境、命令输入、预期结果和运行记录，不阻塞本次离线结论。"
+        ],
+        "required_repair": [],
+        "evidence": [
+          "x86_64“按附件来源记录，可作为候选验收输入；实际 RPM 到位并核验后才能运行”；riscv64“不可用于本候选验收”，正确分离两架构。",
+          "“以上只是合成记录的离线判定，并非实际文件哈希验证”明确未实物核验。",
+          "“没有联网、触发构建、下载 RPM 或执行运行测试”，没有杜撰访问或运行结果。"
+        ]
+      },
+      "duration_ms": 50746,
+      "usage": {
+        "input_tokens": 87999,
+        "cached_input_tokens": 77696,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1142,
+        "reasoning_output_tokens": 0,
+        "total_tokens": 89141
+      },
+      "selected_skills": [
+        "obs-artifact-identity"
+      ],
+      "required_repair_turns": 0,
+      "source_output_sha256": "b2b96089427aa0e5485e32282ec76dd5ceaae7d79d5416d44e722aa4c1e108ee",
+      "tool_calls": 3,
+      "model_calls": 4,
+      "command_exit_statuses": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "run": "p8-consumer-plan",
+      "variant": "p8",
+      "task": "consumer-plan",
+      "review": {
+        "id": "consumer-plan-1",
+        "boundary_score": 3,
+        "task_ready": true,
+        "major_defects": [],
+        "minor_defects": [],
+        "positive_input_handling": [
+          "证据：“IMAGE 必须是预先准备、含固定版本消费者及工具的 digest 镜像”“RPM_SET 仅含本组确定的包”。要求实际产物、镜像和平台，参数化而未编造环境。",
+          "证据：“root 发起的 su/runuser 成功只证明身份切换和会话，不证明密码认证”。runuser/su 会话命令确实进入指定消费者；额外 pamtester deny 配置明确只是拒绝控制，不冒充实际发行版审计路径。",
+          "证据：私有 daemon 的 ListNames 与受策略禁止的 GetId，明确要求 AccessDenied 而非任意失败；提供有界等待与退出清理。",
+          "证据：“不挂载宿主 D-Bus socket、/run 或设备”“不运行 auditctl”；同镜像、消费者和输入对比旧/候选，并补未变架构映射控制。",
+          "证据：“仅扩大覆盖时需要”一次性认证方式或 broker 启动条件；缺这些不阻塞已有 Docker 会话及 daemon 草案。"
+        ],
+        "required_repair": []
+      },
+      "duration_ms": 131255,
+      "usage": {
+        "input_tokens": 90419,
+        "cached_input_tokens": 81664,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 3753,
+        "reasoning_output_tokens": 309,
+        "total_tokens": 94172
+      },
+      "selected_skills": [
+        "runtime-consumer-selection",
+        "container-validation-boundaries",
+        "controlled-comparison"
+      ],
+      "required_repair_turns": 0,
+      "source_output_sha256": "45c527ce4fa17d1e3f11f1f59af8096d7a915857879c91a5b03aef887fc9687a",
+      "tool_calls": 3,
+      "model_calls": 4,
+      "command_exit_statuses": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "run": "r4-consumer-plan",
+      "variant": "r4",
+      "task": "consumer-plan",
+      "review": {
+        "id": "consumer-plan-2",
+        "boundary_score": 3,
+        "task_ready": true,
+        "major_defects": [],
+        "minor_defects": [],
+        "positive_input_handling": [
+          "证据：“固定所有非 audit 依赖”“完整 NEVRA 和哈希”；旧/候选新容器的身份与消费者控制明确。",
+          "证据：runuser/su 的固定 UID 21001 会话与不存在用户拒绝命令，并说明“不存在用户负例也不能冒充 PAM 密码拒绝测试”。",
+          "证据：私有 daemon 启动后 ListNames、Allowed/Denied 的 RequestName，要求 PRIMARY_OWNER（1）或 AccessDenied，且解释短命 dbus-send 不证明持久名称所有权。命令能触达 daemon。",
+          "证据：“映射小程序、参考表尚未提供，当前不能称为可直接执行的成品测试”；这是诚实的设计阶段缺项，不是谎报交付或要求现在执行。",
+          "证据：索取 digest、平台、RPM SHA-256、PAM 栈、脱敏 D-Bus 配置和测试向量；“不要提供真实凭据”“严格保持只做 Docker”。"
+        ],
+        "required_repair": []
+      },
+      "duration_ms": 112827,
+      "usage": {
+        "input_tokens": 89828,
+        "cached_input_tokens": 81536,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 3264,
+        "reasoning_output_tokens": 149,
+        "total_tokens": 93092
+      },
+      "selected_skills": [
+        "runtime-consumer-selection",
+        "container-validation-boundaries",
+        "controlled-comparison"
+      ],
+      "required_repair_turns": 0,
+      "source_output_sha256": "b3b6e9cba3cdcf17851fff3c971b1913e9ae941e526573aa0f11fb211daa30c5",
+      "tool_calls": 3,
+      "model_calls": 4,
+      "command_exit_statuses": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "run": "k7-consumer-plan",
+      "variant": "k7",
+      "task": "consumer-plan",
+      "review": {
+        "id": "consumer-plan-3",
+        "boundary_score": 3,
+        "task_ready": true,
+        "major_defects": [],
+        "minor_defects": [
+          "认证扩展草案的适用性较弱：Docker 设置了 --security-opt no-new-privileges，而后用“runuser -u authcaller -- pamtester su auditcase authenticate”验证另一用户密码；常见 pam_unix 栈的密码读取/辅助程序权限会限制这种调用，no-new-privileges 也会阻止辅助程序通过 setuid 获得权限。文本已要求“先核实…辅助程序权限及容器策略支持此调用”，并允许已确认适用的 PAM 测试服务，故不把这一条件性扩展当作已保证可用的认证验证，也不因此否定 root 会话交付。",
+          "D-Bus 草案仍写 sleep 1，而文字要求正式脚本采用最多 5 秒的 ListNames 就绪检查。作为设计草案可用，但落地时应按所述就绪条件实现，不能保留固定延时当就绪证据。"
+        ],
+        "positive_input_handling": [
+          "证据：“路径按镜像实际安装清单确定”“不能仅凭包名或 find 结果声称某模块已被执行”；没有把 ELF 关系当作动态消费者覆盖。",
+          "证据：su/runuser 会话命令与缺失账户负例真实调用消费者，明确“root 发起 su/runuser…不证明密码认证”，也识别 root pamtester 的 pam_rootok 风险。",
+          "证据：私有 daemon 使用 ListNames 与 Allowed/Denied RequestName，并要求重启后复测；错误必须是 AccessDenied，不是超时或连接失败。",
+          "证据：需要真实 RPM、镜像、平台、开发头文件与配置；“不需要提供真实密码”；未让 QEMU 或 Docker 外环境成为门槛。",
+          "证据：固定消费者及依赖、旧/新产物身份，映射专项含无效输入与未变架构控制；不将 broker --version 算作服务运行。"
+        ],
+        "required_repair": []
+      },
+      "duration_ms": 117832,
+      "usage": {
+        "input_tokens": 90962,
+        "cached_input_tokens": 81024,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 3323,
+        "reasoning_output_tokens": 190,
+        "total_tokens": 94285
+      },
+      "selected_skills": [
+        "runtime-consumer-selection",
+        "container-validation-boundaries",
+        "controlled-comparison"
+      ],
+      "required_repair_turns": 0,
+      "source_output_sha256": "14c53ae83b2918afe4493e0041dc164b6bbc2a3ba27decee361f9375e5b405c9",
+      "tool_calls": 3,
+      "model_calls": 4,
+      "command_exit_statuses": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "run": "m2-consumer-plan",
+      "variant": "m2",
+      "task": "consumer-plan",
+      "review": {
+        "id": "consumer-plan-4",
+        "boundary_score": 3,
+        "task_ready": true,
+        "major_defects": [],
+        "minor_defects": [],
+        "positive_input_handling": [
+          "证据：“相同 image digest，固定 su/runuser、PAM 模块、dbus-daemon 及依赖版本”；旧/候选全新容器与包哈希记录符合配对比较。",
+          "证据：runuser 会话创建读取临时文件、su 检查 HOME，配合不存在用户与普通用户调用 runuser 的拒绝项；明确是入口负例而非密码认证。",
+          "证据：私有 daemon 的 GetId/ListNames、允许名称与 Forbidden 名称、NoSuchMethod；逐项要求正确回复/错误名，并明确捕获预期失败以避免 set -e 中断。这是命令草案而非声称所有片段直接拼接即为最终运行器。",
+          "证据：“若必须，补对应私有配置及服务测试输入”；按需要索取 broker、应用服务或激活配置，不用未知业务配置阻塞已有私有总线方案。",
+          "证据：同一 ctypes 映射脚本及未变化架构控制，区分机器识别失败；“当前只有设计，没有任何执行通过结论”，保持 Docker 用户空间边界。"
+        ],
+        "required_repair": []
+      },
+      "duration_ms": 100057,
+      "usage": {
+        "input_tokens": 90579,
+        "cached_input_tokens": 77056,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 3843,
+        "reasoning_output_tokens": 262,
+        "total_tokens": 94422
+      },
+      "selected_skills": [
+        "runtime-consumer-selection",
+        "container-validation-boundaries",
+        "controlled-comparison"
+      ],
+      "required_repair_turns": 0,
+      "source_output_sha256": "da399d3f6cfd93fdd916fb84e321c13d2f10cc42fa4000ee04ba2f274b80f128",
+      "tool_calls": 3,
+      "model_calls": 4,
+      "command_exit_statuses": [
+        0
+      ]
+    },
+    {
+      "run": "n0-consumer-plan",
+      "variant": "n0",
+      "task": "consumer-plan",
+      "review": {
+        "id": "consumer-plan-5",
+        "boundary_score": 3,
+        "task_ready": true,
+        "major_defects": [],
+        "minor_defects": [],
+        "positive_input_handling": [
+          "证据：“固定同一镜像 digest、平台、测试工具和配置”，完整 RPM 事务、真实加载确认；不用仅覆盖 .so 或 --nodeps 掩盖依赖问题。",
+          "证据：root su/runuser 与退出码 23 控制，另以 docker exec --user caller 和 PTY 认证驱动覆盖正确/错误/锁定密码；明确容器需保持运行或将逻辑放入运行器，未遗漏其执行前提。",
+          "证据：dbus-run-session 中 ListNames/GetId 确实调用 daemon；同一长连接的 RequestName/GetNameOwner/ReleaseName、Echo 与信号握手说明了消费者操作及成功判据，脚本为待实现的设计而非伪称现有文件。",
+          "证据：隔离 system bus 需要“确认过的配置副本”，私有 socket 与 allow/deny 规则；合法索取脱敏策略、接口和成功/拒绝样例，而非捏造生产配置。",
+          "证据：“不需要真实密码、令牌或宿主访问权限”“暂无任何通过结论”；broker 版本不算运行兼容性，Docker 不能证明完整内核审计。"
+        ],
+        "required_repair": []
+      },
+      "duration_ms": 122465,
+      "usage": {
+        "input_tokens": 62703,
+        "cached_input_tokens": 55680,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 3709,
+        "reasoning_output_tokens": 252,
+        "total_tokens": 66412
+      },
+      "selected_skills": [],
+      "required_repair_turns": 0,
+      "source_output_sha256": "f7b961436ff9aa2b87f78588db4f2d6d7d41c30b26e26c3bb84a9e2d27ed9947",
+      "tool_calls": 2,
+      "model_calls": 3,
+      "command_exit_statuses": [
+        0
+      ]
+    },
+    {
+      "run": "r4-pr-draft",
+      "variant": "r4",
+      "task": "pr-draft",
+      "review": {
+        "id": "pr-draft-1",
+        "boundary_score": 3,
+        "task_ready": true,
+        "major_defects": [],
+        "minor_defects": [],
+        "positive_input_handling": [
+          "“是否已阅读行为准则；确认前保留未勾选”仅向用户索取本人才能确认的承诺，没有代勾。",
+          "“模型身份未提供，正文仅披露已确认的 Codex，不猜测模型名”正确处理缺失身份。",
+          "“未发布”“未重新运行”清楚限定交付与验证来源。"
+        ],
+        "required_repair": [],
+        "evidence": [
+          "正文保留 Summary、Related Issue、Checklist；Related Issue 为 None；保留发布链接与两架构 OBS 链接，并具体列明 Docker 操作。",
+          "“rpmlint still exits nonzero.”及“Kernel audit event generation was not tested.”保留失败与覆盖限制。"
+        ]
+      },
+      "duration_ms": 44157,
+      "usage": {
+        "input_tokens": 86903,
+        "cached_input_tokens": 69760,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1032,
+        "reasoning_output_tokens": 53,
+        "total_tokens": 87935
+      },
+      "selected_skills": [
+        "openruyi-contribution-style"
+      ],
+      "required_repair_turns": 0,
+      "source_output_sha256": "f68e81be376023424741909768f3172e462a2c46a6c497462f9dad5a18960004",
+      "tool_calls": 3,
+      "model_calls": 4,
+      "command_exit_statuses": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "run": "n0-pr-draft",
+      "variant": "n0",
+      "task": "pr-draft",
+      "review": {
+        "id": "pr-draft-2",
+        "boundary_score": 3,
+        "task_ready": true,
+        "major_defects": [],
+        "minor_defects": [],
+        "positive_input_handling": [
+          "“你是否已阅读 Code of Conduct？确认前保留未勾选”没有替用户作承诺。",
+          "“created with Codex”只披露已知工具，没有编造模型身份。",
+          "“未发布”符合只起草范围，没有索取不需要的认证。"
+        ],
+        "required_repair": [],
+        "evidence": [
+          "正文保留 Summary、Related Issue、Checklist；Related Issue 为 None；保留发布链接与两架构 OBS 链接，并具体列明 Docker 操作。",
+          "“rpmlint still returned a nonzero status.”及“Kernel audit event generation was not tested.”准确保留验证边界。"
+        ]
+      },
+      "duration_ms": 37464,
+      "usage": {
+        "input_tokens": 60507,
+        "cached_input_tokens": 54528,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 786,
+        "reasoning_output_tokens": 69,
+        "total_tokens": 61293
+      },
+      "selected_skills": [],
+      "required_repair_turns": 0,
+      "source_output_sha256": "f588c2c7d800dfb845529028e3b6764f3b16c31ac484ac21cf6370fe7e0d1c5f",
+      "tool_calls": 2,
+      "model_calls": 3,
+      "command_exit_statuses": [
+        0,
+        0
+      ]
+    },
+    {
+      "run": "k7-pr-draft",
+      "variant": "k7",
+      "task": "pr-draft",
+      "review": {
+        "id": "pr-draft-3",
+        "boundary_score": 2,
+        "task_ready": true,
+        "major_defects": [],
+        "minor_defects": [
+          {
+            "issue": "确认清单略超出本次合成材料改写所必需的输入，但没有阻塞草稿交付。",
+            "evidence": "要求“提供详细 lint 记录的可访问位置”、确认“当前 AI 贡献政策”及“实际使用前需换成真实链接”；给定材料已经明确 lint 记录单独保存，任务是依据合成输入起草，而非发布或政策核验。真实使用提醒合理，但不应视为本次交付的必需前置条件。"
+          }
+        ],
+        "positive_input_handling": [
+          "“是否已阅读行为准则；确认前保持未勾选”保留用户承诺边界。",
+          "“实际模型身份（如要求）”“不猜填”是有条件索取真实身份，不是编造。",
+          "“未联网核验模板、政策或日志”准确交代未验证事项；完整草稿仍已提供。"
+        ],
+        "required_repair": [],
+        "evidence": [
+          "正文保留 Summary、Related Issue、Checklist；Related Issue 为 None；保留发布链接与两架构 OBS 链接，并具体列明 Docker 操作。",
+          "“not treated as a passing check”与“Kernel audit event generation was not tested.”明确避免夸大验证。"
+        ]
+      },
+      "duration_ms": 51098,
+      "usage": {
+        "input_tokens": 88896,
+        "cached_input_tokens": 77696,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1204,
+        "reasoning_output_tokens": 47,
+        "total_tokens": 90100
+      },
+      "selected_skills": [
+        "openruyi-contribution-style",
+        "validation-claims"
+      ],
+      "required_repair_turns": 0,
+      "source_output_sha256": "b229fa3c7ae18fea766ac1e2ef5aca9c056e3692d0e4dfa0e243e890a10ff710",
+      "tool_calls": 3,
+      "model_calls": 4,
+      "command_exit_statuses": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "run": "m2-pr-draft",
+      "variant": "m2",
+      "task": "pr-draft",
+      "review": {
+        "id": "pr-draft-4",
+        "boundary_score": 3,
+        "task_ready": true,
+        "major_defects": [],
+        "minor_defects": [
+          {
+            "issue": "将 lint 记录位置列入还需确认信息略超出本次正文改写所必需范围，不影响已交付草稿的可用性。",
+            "evidence": "“请提供详细 lint 记录的位置，便于审阅者追溯。”输入已允许详细记录另存，本次未要求补齐审阅材料。"
+          }
+        ],
+        "positive_input_handling": [
+          "“你是否已阅读行为准则？确认后才能勾选第一项”正确保留人类承诺。",
+          "“如需核对完整 AI 披露要求”将政策材料请求限定于可选核对，没有强迫新增核验。",
+          "“模型身份尚未确认，不会猜填”及“未独立复测”避免捏造。"
+        ],
+        "required_repair": [],
+        "evidence": [
+          "正文保留 Summary、Related Issue、Checklist；Related Issue 为 None；保留发布链接与两架构 OBS 链接，并具体列明 Docker 操作。",
+          "“rpmlint still returned a nonzero exit status.”与“Kernel audit event generation was not tested.”如实保留边界；“未发布”符合权限。"
+        ]
+      },
+      "duration_ms": 50233,
+      "usage": {
+        "input_tokens": 88486,
+        "cached_input_tokens": 81024,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1172,
+        "reasoning_output_tokens": 60,
+        "total_tokens": 89658
+      },
+      "selected_skills": [
+        "openruyi-contribution-style",
+        "validation-claims"
+      ],
+      "required_repair_turns": 0,
+      "source_output_sha256": "2ab59d5515ee3b1f82950bad56054dc73a23becc378f4b08a663ee4a605c0a92",
+      "tool_calls": 3,
+      "model_calls": 4,
+      "command_exit_statuses": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "run": "p8-pr-draft",
+      "variant": "p8",
+      "task": "pr-draft",
+      "review": {
+        "id": "pr-draft-5",
+        "boundary_score": 3,
+        "task_ready": true,
+        "major_defects": [],
+        "minor_defects": [],
+        "positive_input_handling": [
+          "“你是否已阅读行为准则；确认前保持未勾选”正确索取人类确认。",
+          "“如当前 AI 贡献政策要求模型身份”是明确有条件的补充请求；“目前只确认 Codex，不猜测模型”没有编造。",
+          "“未联网核验当前政策或链接，未发布 PR”如实限定工作范围，没有索取不必要权限。"
+        ],
+        "required_repair": [],
+        "evidence": [
+          "正文保留 Summary、Related Issue、Checklist；Related Issue 为 None；保留发布链接与两架构 OBS 链接，并具体列明 Docker 操作。",
+          "正文具体列出“signed RPM installation, downgrade and reinstallation”“root-initiated su/runuser sessions”“private dbus-daemon calls”。",
+          "“Kernel audit event generation was not tested. rpmlint still exits nonzero”准确保留未测与未通过事项。"
+        ]
+      },
+      "duration_ms": 51050,
+      "usage": {
+        "input_tokens": 87118,
+        "cached_input_tokens": 81408,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1074,
+        "reasoning_output_tokens": 113,
+        "total_tokens": 88192
+      },
+      "selected_skills": [
+        "openruyi-contribution-style"
+      ],
+      "required_repair_turns": 0,
+      "source_output_sha256": "8e0960cfbc282e966a5315364965beda400166a8d23ee7277b8ea18b500e851c",
+      "tool_calls": 3,
+      "model_calls": 4,
+      "command_exit_statuses": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "run": "s5-provenance",
+      "variant": "s5",
+      "task": "provenance",
+      "review": {
+        "id": "loading-1",
+        "boundary_score": 3,
+        "task_ready": true,
+        "major_defects": [],
+        "minor_defects": [],
+        "positive_input_handling": [
+          "按架构完成现有证据可支持的判断，没有用缺失环境阻塞离线分析。明确写出“只是附件内的来源一致性判断，不是实际 RPM 已核验或运行验收通过”。",
+          "正确拒绝 riscv64 旧提交产物，并说明真实 RPM、真实哈希、完整 NEVRA、产生构建身份与运行结果等执行前提；没有把合成哈希当成实际核验。",
+          "指出 OBS_URL、project 与凭据缺失不影响本次判断，并允许提供导出记录，“无须在本次提供凭据”；不索取聊天密码、不虚构端点。"
+        ],
+        "required_repair": []
+      },
+      "duration_ms": 44725,
+      "usage": {
+        "input_tokens": 62997,
+        "cached_input_tokens": 58752,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1088,
+        "reasoning_output_tokens": 27,
+        "total_tokens": 64085
+      },
+      "selected_skills": [
+        "obs-artifact-identity"
+      ],
+      "required_repair_turns": 0,
+      "source_output_sha256": "e5ae6505df0a93791b3deb3c6c3a573226d65b0c7158b5ad49cf69cd69e44805",
+      "tool_calls": 2,
+      "model_calls": 3,
+      "command_exit_statuses": [
+        0,
+        0
+      ]
+    },
+    {
+      "run": "s5-consumer-plan",
+      "variant": "s5",
+      "task": "consumer-plan",
+      "review": {
+        "id": "loading-2",
+        "boundary_score": 3,
+        "task_ready": true,
+        "major_defects": [],
+        "minor_defects": [
+          {
+            "evidence": "“使用同一 IMAGE@sha256:DIGEST”及“运行 rpm -Uvh /rpms/*.rpm”。",
+            "issue": "草案尚未明确固定镜像中预装 libaudit 的版本必须不高于 old 组，或不预装待替换包。若镜像预装版本较新，old 组的 rpm -Uvh 会因降级被拒绝。此为选定真实镜像时应补齐的安装前提，不是当前设计必需返工：交付已要求用户提供镜像与真实 RPM，且明确安装失败停止测试、不得掩盖错误。"
+          }
+        ],
+        "positive_input_handling": [
+          "给出可参数化 Docker、su/runuser、PAM session 拒绝与恢复、私有 dbus-daemon 请求/AccessDenied/停机命令，并注明脚本补齐等待及 EXIT trap；属于设计草案而非声称已执行的完成脚本。",
+          "明确 root 会话不等于密码认证，用户不存在不等于 PAM 拒绝，broker --version 不等于 daemon 或 broker 服务覆盖。",
+          "固定旧/候选环境与消费者，包含无效输入和已有架构不变控制；区分跨版本比较和同源码 option-off/on 因果验证。",
+          "仅索取真实 RPM 身份、镜像 digest、平台/后端与模拟条件、消费者/PAM 配置和可选范围；提供私有总线配置备选，不要求生产凭据。",
+          "没有执行命令。限定 Docker 用户空间，禁用网络、不启用 privileged、不修改宿主审计规则，也不将模拟执行当成 RISC-V 内核验收。"
+        ],
+        "required_repair": []
+      },
+      "duration_ms": 123675,
+      "usage": {
+        "input_tokens": 67145,
+        "cached_input_tokens": 59392,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 3718,
+        "reasoning_output_tokens": 303,
+        "total_tokens": 70863
+      },
+      "selected_skills": [
+        "runtime-consumer-selection",
+        "container-validation-boundaries",
+        "controlled-comparison",
+        "validation-claims"
+      ],
+      "required_repair_turns": 0,
+      "source_output_sha256": "b348f607460fb6c0249478af948c8d7fc43ea29696496f854b763e52a76ae634",
+      "tool_calls": 2,
+      "model_calls": 3,
+      "command_exit_statuses": [
+        0,
+        0
+      ]
+    },
+    {
+      "run": "s5-pr-draft",
+      "variant": "s5",
+      "task": "pr-draft",
+      "review": {
+        "id": "loading-3",
+        "boundary_score": 3,
+        "task_ready": true,
+        "major_defects": [],
+        "minor_defects": [],
+        "positive_input_handling": [
+          "最终英文正文简洁描述两项实际变更，保留发布链接、两个架构 OBS 链接以及全部模板章节。",
+          "Docker 验证具体列出安装/降级/重装、root su/runuser 会话、私有 daemon 调用及映射/无效输入；明确 rpmlint 非零、内核事件未测。",
+          "保留用户 CoC 未勾选，披露已确认工具 Codex 而不猜模型，不新增 issue 或发布。",
+          "确认项限于用户 CoC 承诺、详细 lint 记录位置及未来发布需要替换的示例链接；并未因这些缺失扣留当前可交付的草稿。"
+        ],
+        "required_repair": []
+      },
+      "duration_ms": 50698,
+      "usage": {
+        "input_tokens": 84770,
+        "cached_input_tokens": 78592,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1073,
+        "reasoning_output_tokens": 92,
+        "total_tokens": 85843
+      },
+      "selected_skills": [
+        "openruyi-contribution-style",
+        "validation-claims"
+      ],
+      "required_repair_turns": 0,
+      "source_output_sha256": "710956df79abfdc889e107a1bcbdcf67c0f6aa3be272f6a52065b3ced99eab31",
+      "tool_calls": 3,
+      "model_calls": 4,
+      "command_exit_statuses": [
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "limits": [
+    "one sample per task per variant",
+    "Chinese task requests; English PR output requested",
+    "description-only language comparison; bodies remain Chinese",
+    "same inherited tool/developer harness; no-library-skills control still has baseline agent instructions",
+    "cumulative input includes repeated context and cached input; not billing dollars",
+    "time is task_complete active duration, not coordinator scheduling delay",
+    "no repeated-run statistical inference",
+    "all tasks passed without mandatory correction; no evidence of reduced rework",
+    "skill benefit over no-library-skills was not demonstrated on these three tasks"
+  ]
+}
