@@ -1,4 +1,0 @@
-interface:
-  display_name: "Rust Architecture Driver"
-  short_description: "Guides Rust design, quality, and tradeoffs"
-  default_prompt: "Use $rust-dev-lead-skill to choose the minimal robust Rust design with explicit tradeoffs and quality gates."
